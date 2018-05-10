@@ -11,7 +11,7 @@ import {
   Text,
   View,
   TouchableWithoutFeedback,
-  ToastAndroid
+  ToastAndroid,
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -50,7 +50,13 @@ export default class App extends Component<Props> {
   _onVersionClickHandler = () => {
 
     console.log('Touchable clicked');
-    ToastAndroid.show('This is just a beta version for experiment. \n  Better version yet to come.', ToastAndroid.SHORT);
+    ToastAndroid.showWithGravityAndOffset(
+      'This is just a beta version for experiment. \n  Better version yet to come.',
+       ToastAndroid.SHORT,
+       ToastAndroid.BOTTOM,
+       0,
+       20
+      );
 
   }
 
