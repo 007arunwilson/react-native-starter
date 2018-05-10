@@ -12,7 +12,8 @@ import {
   View,
   TouchableWithoutFeedback,
   ToastAndroid,
-  ScrollView
+  ScrollView,
+  Image
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -28,7 +29,10 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Burger Builder
+        </Text>
+        <Text >
+          orders
         </Text>
         <TouchableWithoutFeedback onPress={this._onVersionClickHandler}>
           <View>
@@ -91,6 +95,7 @@ export default class App extends Component<Props> {
     
     The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
               </Text>
+              <Image source={{uri: 'https://yt3.ggpht.com/a-/AJLlDp3pRWHcw2PKao6Po1c03Zhqd2L-Tu_YfpvdLw=s900-mo-c-c0xffffffff-rj-k-no'}} style={{marginTop:20,width:200,height:200}} />
               </View>
             </ScrollView>
           </View>
