@@ -42,6 +42,11 @@ export default class App extends Component<Props> {
         <Text style={styles.instructions}>
           {instructions}
         </Text>
+        <View style={styles.innerSubView} >
+          <View style={styles.innerSubViewLevel1}>
+              <Text style={{color:'#ffffff'}} >Lorem ipsum</Text>
+          </View>
+        </View>
       </View>
     );
   }
@@ -52,11 +57,11 @@ export default class App extends Component<Props> {
     console.log('Touchable clicked');
     ToastAndroid.showWithGravityAndOffset(
       'This is just a beta version for experiment. \n  Better version yet to come.',
-       ToastAndroid.SHORT,
-       ToastAndroid.BOTTOM,
-       0,
-       20
-      );
+      ToastAndroid.SHORT,
+      ToastAndroid.BOTTOM,
+      0,
+      20
+    );
 
   }
 
@@ -85,5 +90,17 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontSize: 16,
     textDecorationLine: 'underline',
+  },
+  innerSubView: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#59A7DA',
+  },
+  innerSubViewLevel1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
