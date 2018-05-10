@@ -9,7 +9,9 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableWithoutFeedback,
+  ToastAndroid
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -27,9 +29,13 @@ export default class App extends Component<Props> {
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
-        <Text style={styles.instructionsStarter}>
-          Starter App ver 1.0 beta
-        </Text>
+        <TouchableWithoutFeedback onPress={this._onVersionClickHandler}>
+          <View>
+            <Text style={styles.instructionsStarter}>
+              Starter App ver 1.0 beta
+          </Text>
+          </View>
+        </TouchableWithoutFeedback>
         <Text style={styles.instructions}>
           To get started, edit App.js
         </Text>
@@ -39,6 +45,15 @@ export default class App extends Component<Props> {
       </View>
     );
   }
+
+
+  _onVersionClickHandler = () => {
+
+    console.log('Touchable clicked');
+    ToastAndroid.show('This is just a beta version for experiment. \n  Better version yet to come.', ToastAndroid.SHORT);
+
+  }
+
 }
 
 const styles = StyleSheet.create({
@@ -63,6 +78,6 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 10,
     fontSize: 16,
-    textDecorationLine:'underline',
+    textDecorationLine: 'underline',
   },
 });
