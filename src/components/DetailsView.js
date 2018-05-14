@@ -93,8 +93,8 @@ export default class EntryView extends Component<Props> {
 
   _onNavigateDetailsClickHandler = () => {
 
-    this.props.navigation.navigate('Entry')
-
+    this.props.navigation.push('About');
+    
   }
 
   _onVersionClickHandler = () => {
