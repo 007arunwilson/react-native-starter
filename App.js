@@ -155,6 +155,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingTop:4,
+    paddingBottom:14,
   },
   ScrollViewInner: {
     padding: 10,
