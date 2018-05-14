@@ -20,9 +20,9 @@ export default class EntryView extends Component<Props> {
           Sub Details view
         </Text>
 
-        <Text style={styles.instructions}>
-        {this.props.navigation.getParam('subDetail','No sub details passed ...')}
-        </Text>
+        <View style={styles.innerSubView}>
+        {this.props.navigation.getParam('subDetail',<Text style={styles.instructions}>No sub details passed ...</Text>)}
+        </View>
 
       </View>
     );
@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#384751',
+    alignItems: 'flex-start',
+    backgroundColor: '#ffffff',
   },
   innerSubViewLevel1: {
     flex: 1,
