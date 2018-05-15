@@ -9,7 +9,9 @@ import {
   ScrollView,
   Image,
   StatusBar,
-  Switch
+  Switch,
+  Button,
+  CameraRoll
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -24,7 +26,7 @@ const instructions = Platform.select({
   type Props = {};
   export default class EntryView extends Component<Props> {
 
-    state = {switchValue:true}
+    state = {switchValue:true,photos:[]}
 
     static navigationOptions = {
         title: 'Home',
@@ -36,7 +38,24 @@ const instructions = Platform.select({
           fontWeight: 'bold',
         },
       };
-      
+    
+
+    cameraRollhandler = () => {
+
+        console.log('[cameraRollhandler]');
+
+        CameraRoll.getPhotos({
+            first: 20,
+            assetType: 'Photos',
+          })
+          .then(r => {
+            this.setState({ photos: r.edges });
+          })
+          .catch((err) => {
+             //Error Loading Images
+          });
+
+    }
 
     render() {
       return (
@@ -49,6 +68,21 @@ const instructions = Platform.select({
           }}
           value={this.state.switchValue}
           />
+          <Button onPress={this.cameraRollhandler} title="Get Photos"  />
+          <ScrollView>
+       {this.state.photos.map((p, i) => {
+       return (
+         <Image
+           key={i}
+           style={{
+             width: 300,
+             height: 100,
+           }}
+           source={{ uri: p.node.image.uri }}
+         />
+       );
+     })}
+     </ScrollView>
           <Text >
             orders
           </Text>
