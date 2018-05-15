@@ -14,8 +14,14 @@ import {
 
 
 type Props = {};
-export default class EntryView extends Component<Props> {
+export default class AboutView extends Component<Props> {
+
+  static navigationOptions = {
+    title: 'About',
+  };
+
   render() {
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -129,8 +135,10 @@ export default class EntryView extends Component<Props> {
       data={data}
       renderItem={(data) => {
         let { item, index } = data;
-        return (<View>
-          <Text>{item.name}</Text>
+        return (<View style={flatListStyles.viewBase} >
+        <View style={flatListStyles.viewInner} >
+          <Text style={flatListStyles.userFullnametext} >{item.name}</Text>
+          </View>
         </View>);
       }}
     />);
@@ -199,3 +207,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   }
 });
+
+const flatListStyles = StyleSheet.create({
+    viewBase:{
+      backgroundColor:'#E6E6E6',
+      flex:1,
+      alignItems:'center',
+      justifyContent:'center',
+      flexDirection:'row',
+    },
+    viewInner:{
+      flex:1,
+      backgroundColor: '#FFF',
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
+      elevation: 1,
+      padding:5,
+      marginBottom:4,
+    },
+    userFullnametext:{
+      color:'#333',
+    }
+})

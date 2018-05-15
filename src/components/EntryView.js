@@ -20,6 +20,11 @@ const instructions = Platform.select({
   
   type Props = {};
   export default class EntryView extends Component<Props> {
+    
+    static navigationOptions = {
+        title: 'Home',
+      };
+
     render() {
       return (
         <View style={styles.container}>

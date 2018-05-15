@@ -13,6 +13,11 @@ import {
 
 type Props = {};
 export default class EntryView extends Component<Props> {
+    static navigationOptions = {
+        title:'Sub Details ( more )'
+    }
+
+
   render() {
     return (
       <View style={styles.container}>

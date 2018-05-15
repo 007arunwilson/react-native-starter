@@ -7,12 +7,17 @@ import {
   TouchableWithoutFeedback,
   ToastAndroid,
   ScrollView,
-  Image
+  Image,
 } from 'react-native';
 
 
 type Props = {};
 export default class EntryView extends Component<Props> {
+
+static navigationOptions = {
+    title: 'Details',
+    };
+
   render() {
     return (
       <View style={styles.container}>
@@ -29,7 +34,7 @@ export default class EntryView extends Component<Props> {
         <TouchableWithoutFeedback onPress={this._onNavigateDetailsClickHandler}>
           <View>
             <Text style={styles.instructionsStarter}>
-             Navigate to Entry View
+             Want to know more about us ?
           </Text>
           </View>
         </TouchableWithoutFeedback>
@@ -94,7 +99,7 @@ export default class EntryView extends Component<Props> {
   _onNavigateDetailsClickHandler = () => {
 
     this.props.navigation.push('About');
-    
+
   }
 
   _onVersionClickHandler = () => {
