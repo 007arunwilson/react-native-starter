@@ -9,37 +9,38 @@ import {
   ScrollView,
   Image,
   Button,
-  FlatList
+  FlatList,
+  RefreshControl
 } from 'react-native';
 import axios from 'axios';
 
 type Props = {};
 export default class AboutView extends Component<Props> {
 
-  state = {data:null};
+  state = { data: null };
 
   static navigationOptions = {
     title: 'About',
   };
 
 
-  componentWillUnmount(){
+  componentWillUnmount() {
 
     console.log('Compoenent DidMount called : ');
 
   }
 
 
-  componentDidMount(){
+  componentDidMount() {
 
-      console.log('Compoenent DidMount called : ');
+    console.log('Compoenent DidMount called : ');
 
-      axios.get('https://reqres.in/api/users?page=4')
-      .then(response=>{
+    axios.get('https://reqres.in/api/users?page=4')
+      .then(response => {
 
-        console.log('Axios response : ',response);
+        console.log('Axios response : ', response);
 
-        this.setState({data:response.data.data})
+        this.setState({ data: response.data.data })
 
       })
 
@@ -55,7 +56,14 @@ export default class AboutView extends Component<Props> {
         <Text style={styles.instructions}>
           The header provided by stack navigator will automatically include a back button when it is possible to go back from the active screen (if there is only one screen in the navigation stack, there is nothing that you can go back to, and so there is no back button).
           </Text>
-        <Button disabled={!this.state.data} onPress={this._onNavigateSubDetailClickHandler} title="Get time info" />
+        <View style={{flex:1,flexDirection:'row',justifyContent:'center'}} >
+          <View style={{margin:4}} >
+            <Button disabled={!this.state.data} onPress={this._onNavigateSubDetailClickHandler} title="Get time info" />
+          </View>
+          <View style={{margin:4}} >
+            <Button onPress={this._onNavigationNewsfeedClickHandler} title="Go to news feed" />
+          </View>
+        </View>
         <TouchableWithoutFeedback onPress={this._onNavigateBackClickHandler}>
           <View>
             <Text style={styles.instructionsStarter}>
@@ -74,19 +82,26 @@ export default class AboutView extends Component<Props> {
     );
   }
 
+
+  _onNavigationNewsfeedClickHandler = () => {
+
+    this.props.navigation.navigate('Newsfeeds');
+
+  }
+
   _onNavigateSubDetailClickHandler = () => {
 
     const dateString = (new Date().getTime());
 
-    let subDetailDataTemplate = (!this.state.data?<Text>Fetching ...</Text>:<FlatList
-      keyExtractor={(item, index) => '_key_'+index}
+    let subDetailDataTemplate = (!this.state.data ? <Text>Fetching ...</Text> : <FlatList
+      keyExtractor={(item, index) => '_key_' + index}
       data={this.state.data}
       renderItem={(data) => {
         let { item, index } = data;
         return (<View style={flatListStyles.viewBase} >
-        <View style={flatListStyles.viewInner} >
-          <Image style={flatListStyles.userAvatar} source={{uri:item.avatar}} />
-          <Text style={flatListStyles.userFullnametext} >{item.first_name}</Text>
+          <View style={flatListStyles.viewInner} >
+            <Image style={flatListStyles.userAvatar} source={{ uri: item.avatar }} />
+            <Text style={flatListStyles.userFullnametext} >{item.first_name}</Text>
           </View>
         </View>);
       }}
@@ -158,31 +173,31 @@ const styles = StyleSheet.create({
 });
 
 const flatListStyles = StyleSheet.create({
-    viewBase:{
-      backgroundColor:'#E6E6E6',
-      flex:1,
-      alignItems:'center',
-      justifyContent:'center',
-      flexDirection:'row',
-    },
-    viewInner:{
-      flex:1,
-      backgroundColor: '#FFF',
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.8,
-      shadowRadius: 2,
-      elevation: 1,
-      padding:5,
-      marginBottom:4,
-      flexDirection:'row',
-    },
-    userFullnametext:{
-      color:'#333',
-      paddingLeft:5,
-    },
-    userAvatar:{
-      width: 40,
-      height: 40
-    }
+  viewBase: {
+    backgroundColor: '#E6E6E6',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  viewInner: {
+    flex: 1,
+    backgroundColor: '#FFF',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 1,
+    padding: 5,
+    marginBottom: 4,
+    flexDirection: 'row',
+  },
+  userFullnametext: {
+    color: '#333',
+    paddingLeft: 5,
+  },
+  userAvatar: {
+    width: 40,
+    height: 40
+  }
 })

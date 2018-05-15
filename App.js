@@ -9,6 +9,7 @@ import EntryView from './src/components/EntryView';
 import DetailsView from './src/components/DetailsView';
 import AboutView from './src/components/AboutView';
 import SubDetails from './src/components/SubDetailsView';
+import Newsfeeds from './src/components/Newsfeeds';
 
 export default createStackNavigator({
   Entry: {
@@ -22,6 +23,9 @@ export default createStackNavigator({
   },
   SubDetails: {
     screen: SubDetails
+  },
+  Newsfeeds: {
+    screen: Newsfeeds
   },
 },
 {

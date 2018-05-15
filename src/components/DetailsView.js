@@ -9,7 +9,7 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
-
+import axios from 'axios';
 
 type Props = {};
 export default class EntryView extends Component<Props> {

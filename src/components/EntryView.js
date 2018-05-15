@@ -7,7 +7,7 @@ import {
   TouchableWithoutFeedback,
   ToastAndroid,
   ScrollView,
-  Image
+  Image,
 } from 'react-native';
 
 
@@ -23,7 +23,15 @@ const instructions = Platform.select({
 
     static navigationOptions = {
         title: 'Home',
+        headerStyle: {
+          backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
       };
+      
 
     render() {
       return (
