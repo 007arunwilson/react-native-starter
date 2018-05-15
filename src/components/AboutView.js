@@ -11,93 +11,37 @@ import {
   Button,
   FlatList
 } from 'react-native';
-
+import axios from 'axios';
 
 type Props = {};
 export default class AboutView extends Component<Props> {
 
-  state = {data:[
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 1, "name": "Charil Master", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 2, "name": "Jumbro Merlin", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-    { "id": 3, "name": "Fedora Louis", "last_message": "exploit proactive functionalities", "picture": "url", "time": "29/10/2016" },
-  ]};
+  state = {data:null};
 
   static navigationOptions = {
     title: 'About',
   };
 
+
+  componentWillUnmount(){
+
+    console.log('Compoenent DidMount called : ');
+
+  }
+
+
   componentDidMount(){
 
-      console.log('[Component Did mount]');
+      console.log('Compoenent DidMount called : ');
+
+      axios.get('https://reqres.in/api/users?page=4')
+      .then(response=>{
+
+        console.log('Axios response : ',response);
+
+        this.setState({data:response.data.data})
+
+      })
 
   }
 
@@ -111,7 +55,7 @@ export default class AboutView extends Component<Props> {
         <Text style={styles.instructions}>
           The header provided by stack navigator will automatically include a back button when it is possible to go back from the active screen (if there is only one screen in the navigation stack, there is nothing that you can go back to, and so there is no back button).
           </Text>
-        <Button onPress={this._onNavigateSubDetailClickHandler} title="Get time info" />
+        <Button disabled={!this.state.data} onPress={this._onNavigateSubDetailClickHandler} title="Get time info" />
         <TouchableWithoutFeedback onPress={this._onNavigateBackClickHandler}>
           <View>
             <Text style={styles.instructionsStarter}>
@@ -134,14 +78,15 @@ export default class AboutView extends Component<Props> {
 
     const dateString = (new Date().getTime());
 
-    const subDetailDataTemplate = (<FlatList
+    let subDetailDataTemplate = (!this.state.data?<Text>Fetching ...</Text>:<FlatList
       keyExtractor={(item, index) => '_key_'+index}
       data={this.state.data}
       renderItem={(data) => {
         let { item, index } = data;
         return (<View style={flatListStyles.viewBase} >
         <View style={flatListStyles.viewInner} >
-          <Text style={flatListStyles.userFullnametext} >{item.name}</Text>
+          <Image style={flatListStyles.userAvatar} source={{uri:item.avatar}} />
+          <Text style={flatListStyles.userFullnametext} >{item.first_name}</Text>
           </View>
         </View>);
       }}
@@ -230,8 +175,14 @@ const flatListStyles = StyleSheet.create({
       elevation: 1,
       padding:5,
       marginBottom:4,
+      flexDirection:'row',
     },
     userFullnametext:{
       color:'#333',
+      paddingLeft:5,
+    },
+    userAvatar:{
+      width: 40,
+      height: 40
     }
 })
