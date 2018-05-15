@@ -20,7 +20,7 @@ const instructions = Platform.select({
   
   type Props = {};
   export default class EntryView extends Component<Props> {
-    
+
     static navigationOptions = {
         title: 'Home',
       };
@@ -29,7 +29,7 @@ const instructions = Platform.select({
       return (
         <View style={styles.container}>
           <Text style={styles.welcome}>
-            Burger Builder
+            Burger Builders
           </Text>
           <Text >
             orders
