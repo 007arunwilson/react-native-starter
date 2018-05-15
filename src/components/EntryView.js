@@ -8,8 +8,9 @@ import {
   ToastAndroid,
   ScrollView,
   Image,
+  StatusBar,
+  Switch
 } from 'react-native';
-
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' +
@@ -17,9 +18,13 @@ const instructions = Platform.select({
     android: 'Double tap R on your keyboard to reload,\n' +
       'Shake or press menu button for dev menu',
   });
+
+  
   
   type Props = {};
   export default class EntryView extends Component<Props> {
+
+    state = {switchValue:true}
 
     static navigationOptions = {
         title: 'Home',
@@ -39,6 +44,11 @@ const instructions = Platform.select({
           <Text style={styles.welcome}>
             Burger Builders
           </Text>
+          <Switch onValueChange={()=>{
+            this.setState({switchValue:!this.state.switchValue});
+          }}
+          value={this.state.switchValue}
+          />
           <Text >
             orders
           </Text>

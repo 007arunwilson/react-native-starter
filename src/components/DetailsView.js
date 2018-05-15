@@ -8,6 +8,7 @@ import {
   ToastAndroid,
   ScrollView,
   Image,
+  StatusBar
 } from 'react-native';
 import axios from 'axios';
 
