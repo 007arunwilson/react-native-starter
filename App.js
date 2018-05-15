@@ -10,6 +10,7 @@ import DetailsView from './src/components/DetailsView';
 import AboutView from './src/components/AboutView';
 import SubDetails from './src/components/SubDetailsView';
 import Newsfeeds from './src/components/Newsfeeds';
+import AccessMedia from './src/components/AccessMedia';
 
 export default createStackNavigator({
   Entry: {
@@ -26,6 +27,9 @@ export default createStackNavigator({
   },
   Newsfeeds: {
     screen: Newsfeeds
+  },
+  AccessMedia: {
+    screen: AccessMedia
   },
 },
 {

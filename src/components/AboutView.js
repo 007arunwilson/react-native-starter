@@ -30,7 +30,6 @@ export default class AboutView extends Component<Props> {
 
   }
 
-
   componentDidMount() {
 
     console.log('Compoenent DidMount called : ');
@@ -63,6 +62,9 @@ export default class AboutView extends Component<Props> {
           <View style={{margin:4}} >
             <Button onPress={this._onNavigationNewsfeedClickHandler} title="Go to news feed" />
           </View>
+          <View style={{margin:4}} >
+            <Button onPress={this._onNavigationAccessMediaClickHandler} title="Access media" />
+          </View>
         </View>
         <TouchableWithoutFeedback onPress={this._onNavigateBackClickHandler}>
           <View>
@@ -82,6 +84,11 @@ export default class AboutView extends Component<Props> {
     );
   }
 
+  _onNavigationAccessMediaClickHandler = () => {
+
+    this.props.navigation.navigate('AccessMedia');
+
+  }
 
   _onNavigationNewsfeedClickHandler = () => {
 
