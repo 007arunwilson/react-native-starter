@@ -38,6 +38,18 @@ const instructions = Platform.select({
           fontWeight: 'bold',
         },
       };
+
+      componentDidMount(){
+
+        console.log('[Entry View] componentDidMount');
+
+        this.props.navigation.addListener('willBlur',payload=>{
+          
+          console.log('Compoenet will Blur',payload);
+
+        });
+
+      }
     
     render() {
       return (
